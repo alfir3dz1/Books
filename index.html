@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management System</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Book Management System</h1>
+
+    <div id="authenticationForms">
+        <div id="loginForm">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <button onclick="showRegistrationForm()">Register</button> <!-- Move Register button here -->
+        </div>
+
+        <div id="registrationForm" style="display: none;">
+            <h2>Registration</h2>
+            <input type="text" id="newUsername" placeholder="New Username">
+            <input type="password" id="newPassword" placeholder="New Password">
+            <button onclick="register()">Register</button>
+            <button onclick="goBackToLogin()">Back</button>
+        </div>
+    </div>
+
+    <div id="bookManagement" style="display: none;">
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title">
+            <label for="author">Author:</label>
+            <input type="text" id="author">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn">
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre">
+            <label for="availability">Availability:</label>
+            <select id="availability">
+                <option value="available">Available</option>
+                <option value="onloan">On Loan</option>
+            </select>
+            <button onclick="addBook()">Add Book</button>
+        </div>
+        <div>
+            <h2>Books</h2>
+            <input type="text" id="search" placeholder="Search by title or author">
+            <button onclick="searchBooks()">Search</button>
+            <button onclick="sortBooks()">Sort by Title</button>
+            <ul id="bookList"></ul>
+        </div>
+
+        <div id="updateModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('updateModal')">&times;</span>
+                <h2>Update Book</h2>
+                <input type="hidden" id="updateIndex">
+                <label for="updateTitle">Title:</label>
+                <input type="text" id="updateTitle">
+                <label for="updateAuthor">Author:</label>
+                <input type="text" id="updateAuthor">
+                <label for="updateIsbn">ISBN:</label>
+                <input type="text" id="updateIsbn">
+                <label for="updateGenre">Genre:</label>
+                <input type="text" id="updateGenre">
+                <label for="updateAvailability">Availability:</label>
+                <select id="updateAvailability">
+                    <option value="available">Available</option>
+                    <option value="onloan">On Loan</option>
+                </select>
+                <button onclick="updateBook()">Update Book</button>
+            </div>
+        </div>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="database.js"></script>
+</body>
+</html>
